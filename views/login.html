@@ -1,0 +1,29 @@
+<html>
+<head>
+    <link rel="stylesheet" href="styles/login.css">
+</head>
+<body>
+    <div ng-controller="loginController">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/ca/AngularJS_logo.svg/2560px-AngularJS_logo.svg.png" height="69">
+        <div class="container">
+            <div class="login">LOGIN</div>
+            <input 
+                placeholder="E-mail" 
+                class="field"
+                ng-model="email"
+            > 
+            <input 
+                placeholder="Senha"
+                type="password" 
+                class="field"
+                ng-model="senha"
+            >
+
+            <button ng-click="fazerLogin(email, senha)">LOGIN</button>
+        </div>
+        <div class="link">
+            <a href="#!/registrar">Não possui conta? Crie uma agora!</a>    
+        </div>
+    </div>
+</body>
+</html>

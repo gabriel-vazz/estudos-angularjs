@@ -1,0 +1,36 @@
+body {
+    background-color:#ffebd4; 
+    margin-left: 22px;
+}
+a {
+    color: black;
+}
+.searchContainer {
+    width: 350px;
+    background-color: white;
+    padding: 10px;
+    border-style: double;
+    border-width: 2px;
+    font-size: 30px;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 15px;
+    margin-top: 25px;
+}
+.user {
+    width: 260px;
+    background-color: white;
+    padding: 5px;
+    border-style: double;
+    border-width: 2px;
+    font-size: 20px;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 5px;
+}
+.email {
+    font-size: 14px;
+}
+.header {
+    margin-top: 5px;
+}

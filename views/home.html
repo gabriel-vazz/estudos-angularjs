@@ -1,0 +1,23 @@
+<html>
+<head>
+    <link rel="stylesheet" href="styles/home.css">
+</head>
+<body>
+    <header></header>
+    <div ng-controller="usuarioController">
+        <div class="searchContainer">
+            <div class="search">
+                PESQUISAR USUARIO
+            </div>
+            <div>
+                <input ng-model="search.nome"> 
+            </div>
+        </div>
+        
+        <div ng-init="getUsuarios()">
+        <div ng-repeat="usuario in usuarios | filter:search:strict">
+            <perfil-pequeno usuario="usuario"></perfil-pequeno>
+        </div>
+    </div>
+</body>
+</html>

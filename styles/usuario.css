@@ -1,0 +1,39 @@
+body { 
+    background-color:#ffebd4; 
+    margin-left: 20px;
+}
+img {
+    margin-top: 5px;
+    margin-bottom: 15px;
+}
+.name {
+    max-width: fit-content;
+    background-color: white;
+    padding: 20px;
+    border-style: double;
+    border-width: 4px;
+    font-size: 40px;
+    margin-top: 15px;
+    margin-bottom: 20px;
+}
+.bottom {
+    font-size: 20px;
+    display: flex;
+    justify-content: space-between;
+}
+.curso {
+    color: #c80000;
+    margin-top: 10px;
+    margin-left: 10px;
+    font-size: 15px;
+    display: flex;
+    flex-direction: column;
+}
+.cidade {
+    font-size: 15px;
+    margin-top: 25px;
+}
+.noPosts {
+    color:#c80000;
+    font-size: 20px;
+}

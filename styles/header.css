@@ -1,0 +1,25 @@
+a {
+    text-decoration: none;
+}
+.container {
+    display: flex;
+    justify-content: space-between;
+    margin-right: 10px;
+}
+.links {
+    display: flex;
+    margin-right: 25px;
+}
+.link {
+    margin-left: 40px;
+    margin-top: 5px;
+    font-size: 20px;
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    padding: 8px;
+    border-style: double;
+    border-width: 2px;
+    width: 35px;
+    height: 35px;
+}
