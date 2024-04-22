@@ -1,0 +1,29 @@
+<html>
+    <link rel="stylesheet" href="styles/usuario.css">
+<head>
+</head>
+<body>
+    <div ng-controller="usuarioController">
+        <header></header>
+
+        <div ng-init="getUsuario()"></div>
+        <perfil-usuario usuario="usuario"></perfil-usuario>
+
+        <div ng-controller="postController">
+            <div ng-init="getUserPosts()"></div>
+            
+            <div ng-if="postagens.length" ng-repeat="postagem in postagens">
+                <div class="post">
+                    <hr>
+                    <b>{{ usuario.nome }}: </b>
+                    {{ postagem.texto }}
+                </div>
+            </div>
+            
+            <div class="noPosts">
+                {{ msg }}
+            </div>
+        </div>
+    </div>
+</body>
+</html>

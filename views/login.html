@@ -5,7 +5,7 @@
 <body>
     <div ng-controller="loginController">
         <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/ca/AngularJS_logo.svg/2560px-AngularJS_logo.svg.png" height="69">
-        <div class="container">
+        <div class="loginContainer">
             <div class="login">LOGIN</div>
             <input 
                 placeholder="E-mail" 
@@ -20,6 +20,9 @@
             >
 
             <button ng-click="fazerLogin(email, senha)">LOGIN</button>
+            <div class="wrongCredentials" ng-if="msg">
+                {{ msg }}
+            </div>
         </div>
         <div class="link">
             <a href="#!/registrar">Não possui conta? Crie uma agora!</a>    

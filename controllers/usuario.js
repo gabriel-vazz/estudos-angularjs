@@ -3,12 +3,18 @@ app.controller('usuarioController', [
     '$routeParams',
     'usuarioFactory',
     '$location',
+    '$cookies',
     function usuarioController(
         $scope, 
         $routeParams, 
         usuarioFactory, 
         $location,
+        $cookies
     ) {
+
+    if($cookies.getObject('sessao').id == $routeParams.id) {
+        $location.path('/perfil');
+    }
     
     $scope.getUsuarios = function() {
         usuarioFactory.getAllUsers(function(result) {

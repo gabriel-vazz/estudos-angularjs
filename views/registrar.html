@@ -4,13 +4,58 @@
 </head>
 <body>
     <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/ca/AngularJS_logo.svg/2560px-AngularJS_logo.svg.png" height=69>
-    <div class="container">  
-        <div class="register">REGISTRAR</div>
-        <input placeholder="Nome" class="field">
-        <input placeholder="E-mail" class="field"> 
-        <input placeholder="Senha" class="field">
-        <button>CRIAR CONTA</button>
+    
+    <form name="form" ng-submit="registrarUsuario()" novalidate>
+        <div class="registerContainer">  
+            <div class="register">
+                REGISTRAR
+            </div>
+
+            <input 
+                placeholder="Nome" 
+                name="nome" 
+                class="field"
+                ng-required="true"
+                ng-model="nome"
+            >
+            <input 
+                placeholder="E-mail" 
+                name="email" 
+                class="field"
+                type="email"
+                ng-required="true"
+                ng-model="email"
+            >
+            <input 
+                placeholder="Senha" 
+                name="senha" 
+                class="field" 
+                type="password"
+                ng-required="true"
+                ng-model="senha"
+            >
+            <input 
+                type="submit" 
+                value="CRIAR CONTA" 
+                ng-disabled="form.$invalid"
+            >
+
         <button><a href="#!/login">VOLTAR</a></button>
+    </form>
+    </div>
+
+    <div ng-if="msg" class="message">
+        {{ msg }}
+    </div>
+
+    <div class="validationError" ng-show="form.nome.$dirty && form.nome.$invalid">
+        Campo nome é obrigatório.
+    </div>
+    <div class="validationError" ng-show="form.email.$dirty && form.email.$invalid">
+        É obrigatório um endereço de E-Mail válido!
+    </div>
+    <div class="validationError" ng-show="form.senha.$dirty && form.senha.$invalid">
+        Campo senha é obrigatório.
     </div>
 </body>
 </html>

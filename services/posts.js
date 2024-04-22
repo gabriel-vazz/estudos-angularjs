@@ -11,5 +11,15 @@ app.factory('postFactory', ['$http', '$sce', function($http, $sce) {
         })
     }
 
+    obj.insertPost = function(id, texto, callback) {
+        const url = `http://localhost:3000/posts/new/?id=${id}&texto=${texto}`;
+        $http({
+            url: $sce.trustAsResourceUrl(url),
+            method: "JSONP"
+        }).then(function(response) {
+            callback(response.data);
+        })
+    }
+
     return obj;
 }]);

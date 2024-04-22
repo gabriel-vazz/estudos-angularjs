@@ -1,0 +1,28 @@
+body {
+    margin-left: 20px;
+    background-color: #dfdfdf;
+}
+button {
+    font-size: 15px;
+    margin-bottom: 2px;
+}
+textarea {
+    margin-top: 25px;
+    margin-bottom: 5px;
+}
+.postContainer {
+    background-color: white;
+    padding: 10px;
+    margin-top: 20px;
+    font-size: 25px;
+    border-style: double;
+    border-width: 3px;
+    display: flex;
+    flex-direction: column;
+    width: 400px;
+}
+.message {
+    color: #c80000;
+    margin-top: 5px;
+    font-size: 25px;
+}

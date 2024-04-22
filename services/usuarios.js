@@ -21,6 +21,20 @@ app.factory('usuarioFactory', ['$http', '$sce', function($http, $sce) {
             callback({ error: error.status });
         }) 
     }
+
+    obj.insertUser = function(data, callback) {
+        var { nome, email, senha } = data;
+        var url = `http://localhost:3000/usuarios/new/?nome=${nome}&email=${email}&senha=${senha}`
+
+        $http({
+            url: $sce.trustAsResourceUrl(url),
+            method: "JSONP"
+        }).then(function(response) {
+            callback(response.data);
+        }).catch(function(error) {
+            callback({ error: error.status });
+        })
+    }
     
     return obj;
 }]);

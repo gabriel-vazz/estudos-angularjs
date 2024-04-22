@@ -21,7 +21,7 @@ app.controller('loginController', [
     $scope.fazerLogin = function(email, senha) {
         loginFactory.login(email, senha, function(result) {
             if(result.error === 404) {
-                console.log('Credenciais Incorretas.');
+                $scope.msg = 'Credenciais Incorretas';
             } else {
                 $cookies.putObject('sessao', result.usuario, { expires: '' });
                 $location.path('/');

@@ -1,0 +1,35 @@
+body {
+    margin-left: 20px;
+    background-color: #dfdfdf;
+}
+.profileContainer {
+    width: 500px;
+}
+.buttons {
+    text-align: center;
+}
+.name {
+    max-width: fit-content;
+    background-color: white;
+    padding: 20px;
+    border-style: double;
+    border-width: 4px;
+    font-size: 40px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+.email {
+    font-size: 19px;
+}
+.title {
+    font-size: 30px;
+    margin-top: 30px;
+}
+.post {
+    width: 500px;
+    margin-bottom: 25px;
+}
+.posts {
+    font-size: 26px;
+    margin-bottom: 20px;
+}

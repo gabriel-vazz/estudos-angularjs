@@ -5,6 +5,11 @@
 <body>
     <header></header>
     <div ng-controller="usuarioController">
+        <div ng-controller="perfilController" ng-init="getUsuarioAtual()">
+            <div class="welcome">
+                Bem vindo, {{ perfil.nome }}
+            </div>
+        </div>
         <div class="searchContainer">
             <div class="search">
                 PESQUISAR USUARIO

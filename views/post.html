@@ -1,0 +1,17 @@
+<link rel="stylesheet" href="styles/post.css">
+<div>
+    <header></header>
+    
+    <div class="postContainer">
+        NOVA POSTAGEM
+        <textarea rows="6" cols="50" ng-model="texto"></textarea>
+        <button ng-click="publicar()">POSTAR</button>
+        <button><a href="/#!/perfil">
+            VOLTAR
+        </a></button>
+    </div>
+
+    <div ng-if="msg" class="message">
+        {{ msg }}
+    </div>
+</div>

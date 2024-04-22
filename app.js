@@ -7,14 +7,27 @@ app.config(['$routeProvider', function($routeProvider) {
         controller: 'loginController'
     })
     .when('/registrar', { 
-        templateUrl: 'views/registrar.html'
+        templateUrl: 'views/registrar.html',
+        controller: 'registerController'
     })
     .when('/', { 
         templateUrl: 'views/home.html',
     })
+    .when('/perfil/editar', {
+        templateUrl: 'views/editar_perfil.html',
+        controller: 'perfilController'
+    })
     .when('/perfil/:id', { 
-        templateUrl: 'views/perfil.html',
+        templateUrl: 'views/usuario.html',
         controller: 'usuarioController',
+    })
+    .when('/perfil', {
+        templateUrl: 'views/perfil.html',
+        controller: 'perfilController'
+    })
+    .when('/post', {
+        templateUrl: 'views/post.html',
+        controller: 'postController'
     })
     .otherwise({ 
         templateUrl: 'views/404.html '

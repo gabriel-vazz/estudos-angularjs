@@ -1,5 +1,5 @@
 body { 
-    background-color:#ffebd4; 
+    background-color:#dfdfdf; 
     margin-left: 20px;
 }
 img {
@@ -13,8 +13,11 @@ img {
     border-style: double;
     border-width: 4px;
     font-size: 40px;
-    margin-top: 15px;
+    margin-top: 5px;
     margin-bottom: 20px;
+}
+.email {
+    font-size: 19px;
 }
 .bottom {
     font-size: 20px;
@@ -36,4 +39,8 @@ img {
 .noPosts {
     color:#c80000;
     font-size: 20px;
+}
+.post {
+    width: 500px;
+    margin-bottom: 25px;
 }
