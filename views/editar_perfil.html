@@ -1,31 +1,44 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-</head>
+<link rel="stylesheet" href="styles/editar_perfil.css"></link>
 <body>
-    <div ng-init="getUsuarioAtual()">
-        <header></header>
-        <h1>EDITAR PERFIL</h1>
-    
-        <form name="form" novalidate >
-            <input ng-required="true" name="nome"> 
-            <input ng-required="true" name="email">  
-            <input type="submit" value="SALVAR" ng-disabled="form.$invalid">
-        </form> <br>
-    
-        {{ form.$valid }}
-        
-        <button><a href="/#!/perfil">
-            VOLTAR
-        </a></button>
+    <header></header>
+    <div class="editContainer">
+        EDITAR PERFIL
+
+        <form name="editProfile" ng-submit="editarPerfil()" novalidate >
+            <div class="fields" ng-init="getUsuarioAtual()">
+                <input 
+                    placeholder="Nome" 
+                    ng-required="true"
+                    name="nome"
+                    class="field"
+                    ng-model="nome"
+                >
+                <input 
+                    placeholder="E-Mail" 
+                    ng-required="true"
+                    name="email"
+                    class="field"
+                    ng-model="email"
+                    type="email"
+                >
+                <input 
+                    type="submit" 
+                    value="SALVAR" 
+                    ng-disabled="editProfile.$invalid"
+                >
+            </div>
+        </form>
     </div>
+
+    <div class="errors">
+        <div class="validationError" ng-show="editProfile.nome.$dirty && editProfile.nome.$invalid">
+            Campo nome é obrigatório.
+        </div>
+        <div class="validationError" ng-show="editProfile.email.$dirty && editProfile.email.$invalid">
+            É obrigatório um endereço de E-Mail válido!
+        </div>
+        
+        <div ng-if="msg" class="message">{{ msg }}</div>
+    </div>
+
 </body>
-</html>
-
-
-
-
-
-
-

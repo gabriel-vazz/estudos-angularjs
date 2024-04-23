@@ -70,6 +70,7 @@ a {
 }
 .wrongCredentials {
     margin-top: 5px;
+    font-size: 15px;
 }
 .validationError {
     color: #c80000;
@@ -77,6 +78,9 @@ a {
 }
 .message {
     color: #c80000;
-    margin-top: 5px;
-    font-size: 20px;
+    margin-top: 6px;
+    font-size: 15px;
+}
+.errors {
+    margin-top: 6px;
 }

@@ -5,31 +5,28 @@
 <body>
     <header></header>
 
-    <div ng-controller="loginController" ng-init="getUsuarioAtual()">
+    <div ng-init="getUsuarioAtual()">
         <div class="name">
             {{ perfil.nome }}
-            <div class="email">
-                {{ perfil.email }}
-            </div>
+            <div class="email">{{ perfil.email }}</div>
 
             <div class="buttons">
                 <button><a href="/#!/perfil/editar">
                     EDITAR PERFIL
                 </a></button>
-
                 <button><a href="/#!/post">
                     NOVA POSTAGEM
                 </a></button>
             </div>
         </div>
-
-        <div ng-controller="perfilController" ng-init="getMyPosts()">
-
-            <div class="posts">SUAS POSTAGENS</div>
+        
+        <div ng-init="getMyPosts()" class="posts">
             <div ng-repeat="postagem in postagens">
-                <div class="post">
-                    <hr>
-                    <b>{{ perfil.nome }}:</b> {{ postagem.texto }}
+                <div ng-if="postagens.length">
+                    <postagem usuario="perfil" postagem="postagem"></postagem>
+                </div>
+                <div ng-if="!postagens.length" class="noPosts">
+                    Parece que você ainda não postou nada.
                 </div>
             </div>
         </div>

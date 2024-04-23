@@ -15,7 +15,7 @@
                 PESQUISAR USUARIO
             </div>
             <div>
-                <input ng-model="search.nome"> 
+                <input ng-model="search.nome" placeholder="Nome"> 
             </div>
         </div>
         
@@ -23,6 +23,8 @@
         <div ng-repeat="usuario in usuarios | filter:search:strict">
             <perfil-pequeno usuario="usuario"></perfil-pequeno>
         </div>
+
+        <button ng-click="teste()">TESTE</button>
     </div>
 </body>
 </html>

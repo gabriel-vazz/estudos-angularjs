@@ -1,0 +1,36 @@
+body {
+    background-color: #dfdfdf;
+    margin-left: 22px;
+}
+input {
+    margin-bottom: 3px;
+}
+.fields {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+}
+.editContainer {
+    max-width: fit-content;
+    display: flex;
+    flex-direction: column;
+    margin-left: auto;
+    margin-right: auto;
+    flex-direction: column;
+    background-color: white;
+    padding: 15px;
+    border-style: double;
+    border-width: 3px;
+    margin-top: 30px;
+    font-size: 30px;
+}
+.errors {
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    margin-top: 15px;
+}
+.validationError {
+    color: #c80000;
+    font-size: 16px;
+}

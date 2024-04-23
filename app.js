@@ -29,6 +29,10 @@ app.config(['$routeProvider', function($routeProvider) {
         templateUrl: 'views/post.html',
         controller: 'postController'
     })
+    .when('/post/editar/:id', {
+        templateUrl: 'views/editar_post.html',
+        controller: 'postController'
+    })
     .otherwise({ 
         templateUrl: 'views/404.html '
     })

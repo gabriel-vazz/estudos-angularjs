@@ -9,7 +9,7 @@ app.controller('postController', [
         postFactory, 
         $routeParams,
         $cookies,
-        $location 
+        $location,
     ) {
 
     $scope.getUserPosts = function() {
@@ -36,4 +36,23 @@ app.controller('postController', [
             })
         }
     }
-}])
+
+    $scope.editar = function() {
+        console.log('teste');
+    }
+
+    $scope.getPostagem = function() {
+        const id = $routeParams.id;
+        postFactory.getPost(id, function(result) {
+            $scope.postagem = result.texto;
+        })
+    }
+
+    $scope.excluirPost = function(id) {
+        postFactory.deletePost(id, function(result) {
+            if(result.success) {
+                $scope.deleted = id;
+            }
+        });
+    }
+}]);

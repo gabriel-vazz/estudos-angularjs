@@ -4,13 +4,16 @@ app.controller('usuarioController', [
     'usuarioFactory',
     '$location',
     '$cookies',
+    'loginFactory',
     function usuarioController(
         $scope, 
         $routeParams, 
         usuarioFactory, 
         $location,
-        $cookies
+        $cookies,
+        loginFactory
     ) {
+    loginFactory.protectRoute();
 
     if($cookies.getObject('sessao').id == $routeParams.id) {
         $location.path('/perfil');
@@ -28,6 +31,12 @@ app.controller('usuarioController', [
                 $location.path('/404');
             }
             $scope.usuario = result;
+        });
+    }
+
+    $scope.teste = function() {
+        usuarioFactory.pegarUsuarios().then(function(data) {
+            console.log(data);
         });
     }
 }]);

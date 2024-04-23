@@ -1,6 +1,7 @@
 body {
     margin-left: 20px;
     background-color: #dfdfdf;
+    text-align: center;
 }
 button {
     font-size: 15px;
@@ -20,9 +21,11 @@ textarea {
     display: flex;
     flex-direction: column;
     width: 400px;
+    margin-left: auto;
+    margin-right: auto;
 }
 .message {
     color: #c80000;
-    margin-top: 5px;
-    font-size: 25px;
+    margin-top: 10px;
+    font-size: 18px;
 }
