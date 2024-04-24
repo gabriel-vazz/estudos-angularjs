@@ -2,6 +2,10 @@ body {
     margin-left: 20px;
     background-color: #dfdfdf;
 }
+a { 
+    color: inherit; 
+    text-decoration: none;
+}
 .profileContainer {
     width: 500px;
 }
@@ -37,7 +41,6 @@ body {
     color: #c80000;
 }
 .noPosts {
-    color:#c80000;
     font-size: 20px;
     margin-top: 10px;
 }

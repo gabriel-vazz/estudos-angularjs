@@ -5,6 +5,10 @@ body {
 input {
     margin-bottom: 3px;
 }
+a { 
+    color: inherit; 
+    text-decoration: none;
+}
 .fields {
     margin-top: 20px;
     display: flex;
@@ -33,4 +37,8 @@ input {
 .validationError {
     color: #c80000;
     font-size: 16px;
+}
+.message {
+    margin-bottom: 5px;
+    font-size: 18px;
 }

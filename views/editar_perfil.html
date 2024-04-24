@@ -1,6 +1,7 @@
 <link rel="stylesheet" href="styles/editar_perfil.css"></link>
 <body>
     <header></header>
+
     <div class="editContainer">
         EDITAR PERFIL
 
@@ -11,14 +12,14 @@
                     ng-required="true"
                     name="nome"
                     class="field"
-                    ng-model="nome"
+                    ng-model="perfil.nome"
                 >
                 <input 
                     placeholder="E-Mail" 
                     ng-required="true"
                     name="email"
                     class="field"
-                    ng-model="email"
+                    ng-model="perfil.email"
                     type="email"
                 >
                 <input 
@@ -31,14 +32,13 @@
     </div>
 
     <div class="errors">
+        <div ng-if="msg" class="message">{{ msg }}</div>
+
         <div class="validationError" ng-show="editProfile.nome.$dirty && editProfile.nome.$invalid">
             Campo nome é obrigatório.
         </div>
         <div class="validationError" ng-show="editProfile.email.$dirty && editProfile.email.$invalid">
             É obrigatório um endereço de E-Mail válido!
         </div>
-        
-        <div ng-if="msg" class="message">{{ msg }}</div>
     </div>
-
 </body>

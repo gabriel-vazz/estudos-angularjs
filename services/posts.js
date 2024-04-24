@@ -1,52 +1,68 @@
-app.factory('postFactory', ['$http', '$sce', function($http, $sce) {
+app.factory('postFactory', function($http, $sce, $q) {
 
-    var obj = {}
+    var url = 'http://localhost:3000/posts/';
 
-    obj.getPost = function(id, callback) {
-        const url = `http://localhost:3000/posts/${id}`;
-        $http({
-            url: $sce.trustAsResourceUrl(url),
-            method: "JSONP"
-        }).then(function(response) {
-            callback(response.data);
-        })
-    }
+    return {
+        getPost: function(id) {
+            var q = $q.defer();
 
-    obj.getPostsByUser = function(id, callback) {
-        $http({
-            url: $sce.trustAsResourceUrl(`http://localhost:3000/posts/usuarios/${id}`),
-            method: "JSONP"
-        }).then(function(response) {
-            callback(response.data);
-        })
-    }
+            $http.jsonp($sce.trustAsResourceUrl(url+id))
+            .then((response) => {
+                q.resolve(response.data);
+            }).catch((error) => {
+                q.reject(error);
+            });
+            return q.promise;
+        },
 
-    obj.insertPost = function(id, texto, callback) {
-        const url = `http://localhost:3000/posts/new/?id=${id}&texto=${texto}`;
-        $http({
-            url: $sce.trustAsResourceUrl(url),
-            method: "JSONP"
-        }).then(function(response) {
-            callback(response.data);
-        })
-    }
+///////////////////////////////////////////////////////////////////////////////////////////////////
 
-    obj.deletePost = function(id, callback) {
-        const url = `http://localhost:3000/posts/delete/${id}`;
-        $http({
-            url: $sce.trustAsResourceUrl(url),
-            method: "JSONP"
-        }).then(function(response) {
-            callback(response.data);
-        })
-    }
+        getPostsByUser: function(id) {
+            var q = $q.defer();
 
-    obj.updatePost = function(id, data, callback) {
-        const url = `http://localhost:3000/posts/${id}/?texto=${data}`;
-        $http({
-            url: $sce.trustAsResourceUrl(url)
-        })
-    }
+            $http.jsonp($sce.trustAsResourceUrl(url+`usuarios/${id}`))
+            .then((response) => {
+                q.resolve(response.data);
+            }).catch((error) => {
+                q.reject(error);
+            })
+            return q.promise;
+        },
 
-    return obj;
-}]);
+///////////////////////////////////////////////////////////////////////////////////////////////////
+
+        insertPost: function(id, data) {
+            var q = $q.defer();
+
+            $http.jsonp($sce.trustAsResourceUrl(url+`new/?id=${id}&texto=${data}`))
+            .then((response) => {
+                q.resolve(response.data);
+            });
+            return q.promise;
+        },
+
+///////////////////////////////////////////////////////////////////////////////////////////////////
+
+        deletePost: function(id) {
+            var q = $q.defer();
+
+            $http.jsonp($sce.trustAsResourceUrl(url+`delete/${id}`))
+            .then((response) => {
+                q.resolve(response.data);
+            })
+            return q.promise;
+        },
+
+///////////////////////////////////////////////////////////////////////////////////////////////////
+    
+        updatePost: function(id, data) {
+            var q = $q.defer();
+
+            $http.jsonp($sce.trustAsResourceUrl(url+`update/${id}/?texto=${data}`))
+            .then((response) => {
+                q.resolve(response.data);
+            })
+            return q.promise;
+        }
+    };
+});

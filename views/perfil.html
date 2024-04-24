@@ -20,13 +20,15 @@
             </div>
         </div>
         
-        <div ng-init="getMyPosts()" class="posts">
-            <div ng-repeat="postagem in postagens">
-                <div ng-if="postagens.length">
-                    <postagem usuario="perfil" postagem="postagem"></postagem>
+        <div ng-controller="postController">
+            <div ng-init="getMyPosts()" class="posts">
+                <div ng-repeat="postagem in postagens">
+                    <div ng-if="postagens.length">
+                        <postagem usuario="perfil" postagem="postagem">
+                    </div>
                 </div>
-                <div ng-if="!postagens.length" class="noPosts">
-                    Parece que você ainda não postou nada.
+                <div ng-if="msg" class="noPosts">
+                    {{ msg }}
                 </div>
             </div>
         </div>

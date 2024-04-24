@@ -1,27 +1,22 @@
-app.controller('loginController', [
-    '$scope', 
-    'loginFactory',
-    '$cookies',
-    '$location',
-    function(
-        $scope, 
-        loginFactory, 
-        $cookies,
-        $location
-    ) {
+app.controller('loginController', function(
+    $scope, 
+    loginFactory, 
+    $cookies,
+    $location
+) {
     loginFactory.protectRoute();
     
     $scope.fazerLogin = function(email, senha) {
-        loginFactory.login(email, senha, function(result) {
-            if(result.error === 404) {
-                $scope.msg = 'Credenciais Incorretas.';
-            } else {
-                $cookies.putObject('sessao', result.usuario, { expires: '' });
-                $location.path('/');
-            }
-        }
-    )};
+        loginFactory.login(email, senha)
+        .then((result) => {
+            $cookies.putObject('sessao', result.usuario, { expires: '' });
+            $location.path('/');
+        }, () => {
+            $scope.msg = 'Credenciais Incorretas.';
+        })
+    };
+
     $scope.logout = function() {
         $cookies.remove('sessao');
     }
-}]);
+});

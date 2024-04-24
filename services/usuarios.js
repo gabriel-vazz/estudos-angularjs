@@ -1,65 +1,63 @@
-app.factory('usuarioFactory', ['$http', '$sce', '$q', function($http, $sce, $q) {
+app.factory('usuarioFactory', function($http, $sce, $q) {
     
-    var obj = {}
+    var url = 'http://localhost:3000/usuarios/';
 
-    obj.getAllUsers = function(callback) {
-        $http({
-            url: $sce.trustAsResourceUrl('http://localhost:3000/usuarios'),
-            method: "JSONP"
-        }).then(function(response) {
-            callback(response.data);
-        })
-    }
-
-    obj.getUserById = function(id, callback) {
-        $http({
-            url: $sce.trustAsResourceUrl(`http://localhost:3000/usuarios/${id}`),
-            method: "JSONP"
-        }).then(function(response) {
-            callback(response.data);
-        }).catch(function(error) {
-            callback({ error: error.status });
-        }) 
-    }
-
-    obj.insertUser = function(data, callback) {
-        var { nome, email, senha } = data;
-        var url = `http://localhost:3000/usuarios/new/?nome=${nome}&email=${email}&senha=${senha}`
-
-        $http({
-            url: $sce.trustAsResourceUrl(url),
-            method: "JSONP"
-        }).then(function(response) {
-            callback(response.data);
-        }).catch(function(error) {
-            callback({ error: error.status });
-        })
-    }
-
-    obj.updateUser = function(id, data, callback) {
-        var { nome, email } = data;
-        var url = `http://localhost:3000/usuarios/${id}/editar/?nome=${nome}&email=${email}`;
-
-        $http({
-            url: $sce.trustAsResourceUrl(url),
-            method: "JSONP"
-        }).then(function(response) {
-            callback(response.data);
-        }).catch(function(error) {
-            callback({ error: error.status })
-        })
-    }
+    return {
+        getAllUsers: function() {
+            var q = $q.defer();
     
-    obj.pegarUsuarios = function() {
-        var d = $q.defer();
-        $http({
-            url: $sce.trustAsResourceUrl('http://localhost:3000/usuarios'),
-            method: "JSONP"
-        }).then(function(data) {
-            d.resolve(data);
-        })
-        return d.promise;
-    }
+            $http.jsonp($sce.trustAsResourceUrl(url))
+            .then((response) => {
+                q.resolve(response.data);
+            })
+            return q.promise;
+        },
 
-    return obj;
-}]);
+///////////////////////////////////////////////////////////////////////////////////////////////////
+
+        getUserById: function(id) {
+            var q = $q.defer();
+    
+            $http.jsonp($sce.trustAsResourceUrl(url+id))
+            .then((response) => {
+                q.resolve(response.data);
+            }).catch((error) => {
+                q.reject(error);
+            }) 
+            return q.promise;
+        },
+
+///////////////////////////////////////////////////////////////////////////////////////////////////
+
+        insertUser: function(data) {
+            var q = $q.defer();
+            var { nome, email, senha } = data;
+    
+            $http.jsonp($sce.trustAsResourceUrl(
+                url+`new/?nome=${nome}&email=${email}&senha=${senha}`
+            )).then((response) => {
+                q.resolve(response.data);
+            }).catch((error) => {
+                q.reject(error);
+            })
+            return q.promise;
+        },
+
+///////////////////////////////////////////////////////////////////////////////////////////////////
+
+        updateUser: function(id, data) {
+            var q = $q.defer();
+            var { nome, email } = data;
+    
+            $http.jsonp($sce.trustAsResourceUrl(
+                url+`${id}/editar/?nome=${nome}&email=${email}`
+            )).then((response) => {
+                q.resolve(response.data);
+            }).catch((error) => {
+                q.reject(error);
+            })
+            return q.promise;
+        }
+        
+    }
+});

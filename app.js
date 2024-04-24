@@ -12,6 +12,7 @@ app.config(['$routeProvider', function($routeProvider) {
     })
     .when('/', { 
         templateUrl: 'views/home.html',
+        controller: 'usuarioController'
     })
     .when('/perfil/editar', {
         templateUrl: 'views/editar_perfil.html',

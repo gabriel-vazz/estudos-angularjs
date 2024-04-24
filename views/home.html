@@ -4,7 +4,7 @@
 </head>
 <body>
     <header></header>
-    <div ng-controller="usuarioController">
+    <div>
         <div ng-controller="perfilController" ng-init="getUsuarioAtual()">
             <div class="welcome">
                 Bem vindo, {{ perfil.nome }}
@@ -23,8 +23,6 @@
         <div ng-repeat="usuario in usuarios | filter:search:strict">
             <perfil-pequeno usuario="usuario"></perfil-pequeno>
         </div>
-
-        <button ng-click="teste()">TESTE</button>
     </div>
 </body>
 </html>
