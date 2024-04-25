@@ -1,0 +1,21 @@
+<link rel="stylesheet" href="styles/perfil.css">
+<header></header>
+
+<perfil-usuario usuario="perfil"></perfil-usuario>
+
+<div class="posts">
+    <div ng-repeat="postagem in postagens">
+        <postagem 
+            usuario="perfil" 
+            postagem="postagem",
+            deleted="deleted"
+            excluir="excluirPostagem(postagem.id)"
+        ></postagem>
+    </div>
+    <div ng-if="!postagens.length" class="noPosts">
+        Parece que você ainda não postou nada.
+    </div>
+</div>
+        
+    
+

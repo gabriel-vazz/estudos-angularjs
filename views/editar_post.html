@@ -1,14 +1,12 @@
 <link rel="stylesheet" href="styles/post.css">
 <header></header>
 
-<div class="postContainer" ng-init="getMyPost()">
+<div class="postContainer">
     EDITAR POSTAGEM
-
-    <textarea 
-        rows="6" cols="50" 
-        ng-model="postagem.texto"
-    ></textarea>
-    <button ng-click="editarPostagem()">SALVAR</button>
+    <textarea rows="6" cols="50" ng-model="postagem.texto"></textarea>
+    <button ng-click="editarPostagem()">
+        SALVAR
+    </button>
 </div>
 
 <div ng-if="msg" class="message">{{ msg }}</div>

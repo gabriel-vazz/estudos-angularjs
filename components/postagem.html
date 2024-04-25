@@ -1,6 +1,6 @@
-<div class="post" ng-controller="postController"><hr> 
-    <div ng-if="deleted !== $ctrl.postagem.id">
-        <b>{{ $ctrl.usuario.nome }}: </b> {{ $ctrl.postagem.texto }}
+<div class="post">
+    <div ng-if="!$ctrl.deleted.includes($ctrl.postagem.id)">
+        <hr> <b>{{ $ctrl.usuario.nome }}: </b> {{ $ctrl.postagem.texto }}
 
         <div ng-if="sessao === $ctrl.usuario.id">
             <div class="postButtons">
@@ -8,13 +8,14 @@
                     EDITAR
                 </a></button>
             
-                <button ng-click="excluirPostagem($ctrl.postagem.id)">
+                <button ng-click="$ctrl.excluir()">
                     EXCLUIR
                 </button>
             </div>
         </div>
     </div>
-    <div ng-if="deleted === $ctrl.postagem.id" class="deleted">
-        * POSTAGEM DELETADA COM SUCESSO *
+    
+    <div ng-if="$ctrl.deleted.includes($ctrl.postagem.id)" class="deleted">
+        Postagem deletada com sucesso.
     </div>
 </div>

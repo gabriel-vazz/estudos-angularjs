@@ -1,30 +1,25 @@
-app.controller('perfilController', function(
+app.controller('perfilController', function (
     $scope, 
-    usuarioFactory, 
-    $cookies, 
+    $routeParams, 
     $location,
-    loginFactory
+    authService,
+    usuarioFactory,
+    postFactory
 ) {
-    loginFactory.protectRoute();
+    authService.protectRoute();
+    var id = $routeParams.id;
 
-    var sessao = $cookies.getObject('sessao').id;
+    if(authService.getSessionId() == id) {
+        $location.path('/perfil');
+    }
 
-    $scope.getUsuarioAtual = function() {
-        usuarioFactory.getUserById(sessao).then((data) => {
-            $scope.perfil = data;
-        });
-    }
-    
-    $scope.editarPerfil = function() {
-        const data = { 
-            nome: $scope.perfil.nome, 
-            email: $scope.perfil.email
-        };
-        usuarioFactory.updateUser(sessao, data).then(() => {
-            alert('Seu perfil foi atualizado com sucesso!');
-            $location.path('/perfil');
-        }, () => {
-            $scope.msg = 'Esse endereço de e-mail está indisponível.';
-        })
-    }
+    usuarioFactory.getUserById(id).then((data) => {
+        $scope.usuario = data;
+    }, () => {
+        $location.path('/404');
+    })
+
+    postFactory.getPostsByUser(id).then((data) => {
+        $scope.postagens = data;
+    });
 });

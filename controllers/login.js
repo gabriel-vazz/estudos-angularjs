@@ -1,22 +1,17 @@
-app.controller('loginController', function(
-    $scope, 
-    loginFactory, 
-    $cookies,
-    $location
-) {
-    loginFactory.protectRoute();
+app.controller('loginController', function($scope, authService, $location) {
+    
+    authService.protectRoute();
     
     $scope.fazerLogin = function(email, senha) {
-        loginFactory.login(email, senha)
-        .then((result) => {
-            $cookies.putObject('sessao', result.usuario, { expires: '' });
+        authService.login(email, senha)
+        .then(() => {
             $location.path('/');
         }, () => {
             $scope.msg = 'Credenciais Incorretas.';
         })
     };
 
-    $scope.logout = function() {
-        $cookies.remove('sessao');
+    $scope.encerrarSessao = function() {
+        authService.logout();
     }
 });

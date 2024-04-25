@@ -1,37 +1,13 @@
-<html>
-<head>
-    <link rel="stylesheet" href="styles/perfil.css">
-</head>
-<body>
-    <header></header>
+<link rel="stylesheet" href="styles/usuario.css">
+<header></header>
 
-    <div ng-init="getUsuarioAtual()">
-        <div class="name">
-            {{ perfil.nome }}
-            <div class="email">{{ perfil.email }}</div>
+<perfil-usuario usuario="usuario"></perfil-usuario>
 
-            <div class="buttons">
-                <button><a href="/#!/perfil/editar">
-                    EDITAR PERFIL
-                </a></button>
-                <button><a href="/#!/post">
-                    NOVA POSTAGEM
-                </a></button>
-            </div>
-        </div>
-        
-        <div ng-controller="postController">
-            <div ng-init="getMyPosts()" class="posts">
-                <div ng-repeat="postagem in postagens">
-                    <div ng-if="postagens.length">
-                        <postagem usuario="perfil" postagem="postagem">
-                    </div>
-                </div>
-                <div ng-if="msg" class="noPosts">
-                    {{ msg }}
-                </div>
-            </div>
-        </div>
-    </div>
-</body>
-</html>
+<div ng-repeat="postagem in postagens">
+    <postagem usuario="usuario" postagem="postagem"></postagem>
+</div>
+<div ng-if="!postagens.length" class="noPosts">
+    Esse usuário ainda não postou nada.
+</div>
+    
+

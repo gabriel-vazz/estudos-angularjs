@@ -12,9 +12,6 @@ app.factory('usuarioFactory', function($http, $sce, $q) {
             })
             return q.promise;
         },
-
-///////////////////////////////////////////////////////////////////////////////////////////////////
-
         getUserById: function(id) {
             var q = $q.defer();
     
@@ -26,9 +23,6 @@ app.factory('usuarioFactory', function($http, $sce, $q) {
             }) 
             return q.promise;
         },
-
-///////////////////////////////////////////////////////////////////////////////////////////////////
-
         insertUser: function(data) {
             var q = $q.defer();
             var { nome, email, senha } = data;
@@ -42,9 +36,6 @@ app.factory('usuarioFactory', function($http, $sce, $q) {
             })
             return q.promise;
         },
-
-///////////////////////////////////////////////////////////////////////////////////////////////////
-
         updateUser: function(id, data) {
             var q = $q.defer();
             var { nome, email } = data;
@@ -58,6 +49,5 @@ app.factory('usuarioFactory', function($http, $sce, $q) {
             })
             return q.promise;
         }
-        
     }
 });

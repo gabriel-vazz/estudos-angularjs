@@ -14,9 +14,6 @@ app.factory('postFactory', function($http, $sce, $q) {
             });
             return q.promise;
         },
-
-///////////////////////////////////////////////////////////////////////////////////////////////////
-
         getPostsByUser: function(id) {
             var q = $q.defer();
 
@@ -28,9 +25,6 @@ app.factory('postFactory', function($http, $sce, $q) {
             })
             return q.promise;
         },
-
-///////////////////////////////////////////////////////////////////////////////////////////////////
-
         insertPost: function(id, data) {
             var q = $q.defer();
 
@@ -40,9 +34,6 @@ app.factory('postFactory', function($http, $sce, $q) {
             });
             return q.promise;
         },
-
-///////////////////////////////////////////////////////////////////////////////////////////////////
-
         deletePost: function(id) {
             var q = $q.defer();
 
@@ -52,9 +43,6 @@ app.factory('postFactory', function($http, $sce, $q) {
             })
             return q.promise;
         },
-
-///////////////////////////////////////////////////////////////////////////////////////////////////
-    
         updatePost: function(id, data) {
             var q = $q.defer();
 

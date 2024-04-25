@@ -1,10 +1,16 @@
 <div class="name">
-    {{ $ctrl.usuario.nome }}<!--, {{ $ctrl.usuario.idade }}-->
+    {{ $ctrl.usuario.nome }}
     <div class="bottom">
         <div>{{ $ctrl.usuario.email }}</div>
-        <div class="cidade">{{ $ctrl.usuario.cidade }}</div>
+    </div>
+    <div ng-if="sessao === $ctrl.usuario.id">
+        <div class="buttons">
+            <button>
+                <a href="/#!/perfil/editar">EDITAR PERFIL</a>
+            </button>
+            <button>
+                <a href="/#!/post"> NOVA POSTAGEM</a>
+            </button>
+        </div>
     </div>
 </div>
-<!--<div class="curso">
-    - {{ $ctrl.usuario.fase }}a Fase do Curso Técnico de {{ $ctrl.usuario.tecnico }}.
-</div>-->
